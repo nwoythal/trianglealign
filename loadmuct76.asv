@@ -1,0 +1,28 @@
+function [ facepoints ] = loadmuct76()
+%loadmuct76() loads the data from muct76.csv IF IT EXISTS
+%   Input: None
+%   Output:
+%      data: a struct containing both the names and the data for images
+
+if(nargin~=0)
+    error('Incorrect syntax! Type "help loadmuct76() for information."');
+end
+if exist('muct-landmarks/muct76.csv', 'file')
+    facepoints=importdata('muct-landmarks/muct76.csv');
+    facepoints.textdata=facepoints.textdata(2:end, 1);
+    facepoints.data=facepoints.data(:, 2:end);
+else
+   error('muct76.csv not found! Aborting.');
+end
+
+%Parse through list of files, and check to see if they exist
+%If they don't, we delete them and their corresponding elements
+while k~=length(facepoints.textdata) %can use length b/c it is a vector
+    if ~(exist(strcat('jpg/',facepoints.textdata(k),'.jpg'), 'file'))
+        
+    else
+        
+    end
+end
+
+end
